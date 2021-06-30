@@ -25,4 +25,14 @@ public class AuthTest {
         $("button[data-test-id=action-login]").click();
         $(withText("Личный кабинет")).shouldBe(visible);
     }
+
+    @Test
+        //TODO Тест статус пользователя;
+    void shouldCheckTheUserStatus() {
+        var blockedUser = generateUser("blocked");
+        $("[data-test-id=login] input").setValue(blockedUser.getLogin());
+        $("[data-test-id=password] input").setValue(blockedUser.getPassword());
+        $("button[data-test-id=action-login]").click();
+        $(withText("Пользователь заблокирован")).shouldBe(visible);
+    }
 }
