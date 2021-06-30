@@ -46,4 +46,14 @@ public class AuthTest {
         $(withText("Неверно указан логин или пароль")).shouldBe(visible);
 
     }
+
+    @Test
+        //TODO Тест невалидный пароль.
+    void shouldCheckTheInvalidPassword() {
+        var wrongPasswordUser = generateWrongPasswordUser("active");
+        $("[data-test-id=login] input").setValue(wrongPasswordUser.getLogin());
+        $("[data-test-id=password] input").setValue(wrongPasswordUser.getPassword());
+        $("button[data-test-id=action-login]").click();
+        $(withText("Неверно указан логин или пароль")).shouldBe(visible);
+    }
 }
