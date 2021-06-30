@@ -35,4 +35,15 @@ public class AuthTest {
         $("button[data-test-id=action-login]").click();
         $(withText("Пользователь заблокирован")).shouldBe(visible);
     }
+
+    @Test
+        //TODO Тест невалидный логин;
+    void shouldCheckTheInvalidUsername() {
+        var wrongLoginUser = generateWrongLoginUser("active");
+        $("[data-test-id=login] input").setValue(wrongLoginUser.getLogin());
+        $("[data-test-id=password] input").setValue(wrongLoginUser.getPassword());
+        $("button[data-test-id=action-login]").click();
+        $(withText("Неверно указан логин или пароль")).shouldBe(visible);
+
+    }
 }
