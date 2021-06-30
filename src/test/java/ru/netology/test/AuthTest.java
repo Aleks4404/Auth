@@ -44,7 +44,6 @@ public class AuthTest {
         $("[data-test-id=password] input").setValue(wrongLoginUser.getPassword());
         $("button[data-test-id=action-login]").click();
         $(withText("Неверно указан логин или пароль")).shouldBe(visible);
-
     }
 
     @Test
